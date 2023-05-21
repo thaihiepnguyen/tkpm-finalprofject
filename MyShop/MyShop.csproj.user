@@ -20,6 +20,9 @@
     <Compile Update="UI\MainPage\Pages\Customer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UI\MainPage\Pages\CustomerDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UI\MainPage\Pages\Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -77,6 +80,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\MainPage\Pages\Customer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\MainPage\Pages\CustomerDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\MainPage\Pages\DashBoard.xaml">

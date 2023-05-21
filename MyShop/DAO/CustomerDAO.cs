@@ -127,5 +127,17 @@ namespace MyShop.DAO
 
             return result;
         }
+
+        public void delCustomerById(int id)
+        {
+            string sql = $"""
+                delete customer 
+                where CusID = {id}
+                """;
+
+            var command = new SqlCommand(sql, db.connection);
+
+            command.ExecuteNonQuery();
+        }
     }
 }

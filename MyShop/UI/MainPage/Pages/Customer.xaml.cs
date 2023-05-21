@@ -92,7 +92,13 @@ namespace MyShop.UI.MainPage.Pages
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            int i = customersListView.SelectedIndex;
 
+            var customer = _customers[i];
+            if (customer != null)
+            {
+                _pageNavigation.NavigationService.Navigate(new CustomerDetail(customer, _pageNavigation));
+            }
         }
 
         private void FirstButton_Click(object sender, RoutedEventArgs e)

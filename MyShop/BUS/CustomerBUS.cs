@@ -62,5 +62,10 @@ namespace MyShop.BUS
 
             return result;
         }
+
+        public void delCustomerById(int id)
+        {
+            _customerDAO.delCustomerById(id);
+        }
     }
 }

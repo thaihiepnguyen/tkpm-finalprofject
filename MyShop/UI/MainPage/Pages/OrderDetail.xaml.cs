@@ -59,7 +59,7 @@ namespace MyShop.UI.MainPage.Pages
                 customer = new CustomerBUS();
                 OrderID = list.OrderID;
                 CreateAt = list.CreateAt.Date;
-                CusName = customer.getNameById(list.CusID);
+                CusName = customer.getNameById((int)list.CusID);
                 FinalTotal = string.Format("{0:N0} đ", list.FinalTotal);
             }
         }

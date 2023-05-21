@@ -205,14 +205,17 @@ namespace MyShop.DAO
                     ShopOrderDTO shopOrder = new ShopOrderDTO
                     {
                         OrderID = (int)reader["OrderID"],
-                        CusID = (int)reader["CusID"],
+                        CusID = reader["CusID"] == DBNull.Value ? null : (int?)reader["CusID"],
                         CreateAt = (DateTime)reader["CreateAt"],
                         // này để tránh lỗi :)
                         FinalTotal = reader["FinalTotal"] == DBNull.Value ? null : (decimal?)reader["FinalTotal"],
                         ProfitTotal = reader["ProfitTotal"] == DBNull.Value ? null : (decimal?)reader["ProfitTotal"]
                     };
 
-                    list.Add(shopOrder);
+                    if (shopOrder.CusID != null)
+                    {
+                        list.Add(shopOrder);
+                    }   
                 }
 
                 reader.Close();
@@ -298,6 +301,32 @@ namespace MyShop.DAO
             var command = new SqlCommand(sql, db.connection);
 
             command.ExecuteNonQuery();
+        }
+
+        // lấy những purchase mà cusid đã mua
+        public List<PurchaseDTO> getPuchasesbyCusID(int id)
+        {
+            List<PurchaseDTO> list = new List<PurchaseDTO>();
+            string sql = "select PurchaseID, OrderID, ProID, Quantity, TotalPrice from purchase as p where p.OrderID = " +
+                "(select s.OrderID from shop_order as s where CusID = @id and p.OrderID = s.OrderID)";
+            var command = new SqlCommand(sql, db.connection);
+            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                PurchaseDTO purchase = new PurchaseDTO();
+                purchase.PurchaseID = (int)reader["PurchaseID"];
+                purchase.OrderID = (int)reader["OrderID"];
+                purchase.ProID = (int)reader["ProID"];
+                purchase.Quantity = (int)reader["Quantity"];
+                purchase.TotalPrice = (decimal)reader["TotalPrice"];
+
+                list.Add(purchase);
+            }
+
+            reader.Close();
+            return list;
         }
     }
 }

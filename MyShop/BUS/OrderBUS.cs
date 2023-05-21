@@ -153,5 +153,10 @@ namespace MyShop.BUS
         {
             _orderDAO.deleteOrderById(orderID);
         }
+
+        public List<PurchaseDTO> findPurchasesByCusID(int id)
+        {
+            return _orderDAO.getPuchasesbyCusID(id);
+        }
     }
 }

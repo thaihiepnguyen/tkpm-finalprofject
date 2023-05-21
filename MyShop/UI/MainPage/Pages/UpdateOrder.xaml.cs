@@ -162,7 +162,7 @@ namespace MyShop.UI.MainPage.Pages
             _data.Add(data);
 
             _verifyOrder = true;
-            _currentCustomerID = _shopOrderDTO.CusID;
+            _currentCustomerID = (int)_shopOrderDTO.CusID;
 
             FinalPrice.Text = string.Format("{0:N0} đ", _currentTotalPrice);
 
@@ -251,7 +251,7 @@ namespace MyShop.UI.MainPage.Pages
 
             CustomerCombobox.ItemsSource = customers;
 
-            _currentCustomerID = _orderInfo.Order.CusID;
+            _currentCustomerID = (int)_orderInfo.Order.CusID;
             _customer = _orderInfo.Customer;
 
             for (int i = 0; i < customers.Count; i++)

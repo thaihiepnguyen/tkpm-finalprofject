@@ -81,7 +81,7 @@ namespace MyShop.UI.MainPage.Pages
                 dataList.Add(item);
             }
 
-            _customer = customerBUS.findCustomerById(_order.CusID);
+            _customer = customerBUS.findCustomerById((int)_order.CusID);
             OrderInfo orderInfo = new OrderInfo();
             orderInfo.Customer = _customer;
             orderInfo.Order = _order;
