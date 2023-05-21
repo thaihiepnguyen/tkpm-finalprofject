@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HBmrgDrriol6AJFhigATGHCWiOotrRMOyy2qTQVNX6wlGv6R4F08Fz20i/2Sc0j4IQFaNLaCSSqdYfe30xsKPw==",
+  "dgSpecHash": "KHliBoNs3LzW0a/URsAnsbu5xChcDoIKK8uKzQucv98KSj1M8C/83LW0xT7JwTolOF5/U04qSGEYovIhVDf5xA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\MyShop.csproj",
+  "projectFilePath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\MyShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nguyen Thai Hiep\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Nguyen Thai Hiep\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

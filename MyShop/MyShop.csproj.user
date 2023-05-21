@@ -8,49 +8,55 @@
     <Compile Update="UI\LoginWindow\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\AddOrder.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\AddCustomer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\AddProduct.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\AddOrder.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\Home.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\AddProduct.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\ModifyCategory.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\Customer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\Order.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\OrderDetail.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\ModifyCategory.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\ProductDetail.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\Order.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\Statistical.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\OrderDetail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\StatisticalProduct.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\ProductDetail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\SuperOrderDetail.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\Statistical.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\UpdateCategory.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\StatisticalProduct.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\UpdateOrder.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\SuperOrderDetail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\UpdateProduct.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\UpdateCategory.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\MainPage\Pages\UpdateOrder.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UI\MainPage\Pages\UpdateProduct.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UI\SignupWindow\SignupWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UI\MainWindow\Pages\DashBoard.xaml.cs">
+    <Compile Update="UI\MainPage\Pages\DashBoard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -61,52 +67,58 @@
     <Page Update="UI\LoginWindow\LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\AddOrder.xaml">
+    <Page Update="UI\MainPage\Pages\AddCustomer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\AddProduct.xaml">
+    <Page Update="UI\MainPage\Pages\AddOrder.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\DashBoard.xaml">
+    <Page Update="UI\MainPage\Pages\AddProduct.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\Home.xaml">
+    <Page Update="UI\MainPage\Pages\Customer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\ModifyCategory.xaml">
+    <Page Update="UI\MainPage\Pages\DashBoard.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\ModifyPromotion.xaml">
+    <Page Update="UI\MainPage\Pages\Home.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\Order.xaml">
+    <Page Update="UI\MainPage\Pages\ModifyCategory.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\OrderDetail.xaml">
+    <Page Update="UI\MainPage\Pages\ModifyPromotion.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\ProductDetail.xaml">
+    <Page Update="UI\MainPage\Pages\Order.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\Statistical.xaml">
+    <Page Update="UI\MainPage\Pages\OrderDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\StatisticalProduct.xaml">
+    <Page Update="UI\MainPage\Pages\ProductDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\SuperOrderDetail.xaml">
+    <Page Update="UI\MainPage\Pages\Statistical.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\UpdateCategory.xaml">
+    <Page Update="UI\MainPage\Pages\StatisticalProduct.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\UpdateOrder.xaml">
+    <Page Update="UI\MainPage\Pages\SuperOrderDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\UpdateProduct.xaml">
+    <Page Update="UI\MainPage\Pages\UpdateCategory.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\MainWindow\Pages\UpdatePromotion.xaml">
+    <Page Update="UI\MainPage\Pages\UpdateOrder.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\MainPage\Pages\UpdateProduct.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\MainPage\Pages\UpdatePromotion.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\SignupWindow\SignupWindow.xaml">

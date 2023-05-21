@@ -124,6 +124,7 @@ namespace MyShop.UI.MainPage.Pages
 
             _loadingProgressBar.IsIndeterminate = false;
 
+            // lấy giá trị giảm giá
             foreach (var product in _products)
             {
                 int DiscountPercent = 0;
@@ -142,6 +143,7 @@ namespace MyShop.UI.MainPage.Pages
 
             dataListView.ItemsSource = list;
 
+            // search xong thì gán lại rỗng
             if (keyword.Length != 0)
             {
                 SearchTermTextBox.Text = keyword;

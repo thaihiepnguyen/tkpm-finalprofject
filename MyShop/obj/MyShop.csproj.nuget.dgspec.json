@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\MyShop.csproj": {}
+    "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\MyShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\MyShop.csproj": {
+    "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\MyShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\MyShop.csproj",
+        "projectUniqueName": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\MyShop.csproj",
         "projectName": "MyShop",
-        "projectPath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\MyShop.csproj",
+        "projectPath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\MyShop.csproj",
         "packagesPath": "C:\\Users\\Nguyen Thai Hiep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\tkpm\\MyShop-software\\MyShop\\obj\\",
+        "outputPath": "C:\\Users\\Nguyen Thai Hiep\\Desktop\\clone\\tkpm-finalprofject\\MyShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nguyen Thai Hiep\\AppData\\Roaming\\NuGet\\NuGet.Config",

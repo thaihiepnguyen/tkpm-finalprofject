@@ -181,6 +181,7 @@ namespace MyShop.UI.MainPage.Pages
             CustomerCombobox.IsEnabled = false;
         }
 
+        /*
         private void SaveCustomer_Click(object sender, RoutedEventArgs e)
         {
             var customerDTO = new CustomerDTO();
@@ -195,7 +196,7 @@ namespace MyShop.UI.MainPage.Pages
             _customers.Add(customerDTO);
 
             MessageBox.Show("Khách hàng đã thêm thành công", "Thông báo", MessageBoxButton.OK);
-        }
+        }*/
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

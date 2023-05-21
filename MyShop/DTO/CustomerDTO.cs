@@ -11,6 +11,8 @@ namespace MyShop.DTO
     {
         public int CusID { get; set; }
         public string CusName { get; set; }
+        public string Tel { get; set; }
+        public string Address { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

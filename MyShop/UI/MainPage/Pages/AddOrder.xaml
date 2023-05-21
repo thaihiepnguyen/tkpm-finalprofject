@@ -243,7 +243,9 @@
         <Border Grid.Row="1"
               Grid.Column="1"
               Background="#60ffffff"
+                VerticalAlignment="Top"
               Margin="0,10,20,0"
+                Height="100"
               CornerRadius="10">
 
             <!--Hiển thị chọn khách hàng-->
@@ -279,7 +281,8 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </Border>
-
+                
+                <!--
                 <TextBlock Margin="10,0,0,0" 
                                Text="NHẬP KHÁCH HÀNG MỚI"
                                FontSize="14"
@@ -322,8 +325,6 @@
                         </TextBlock>
                     </Grid>
                 </Border>
-
-                <!--Hiển thị nút bấm lưu -->
                 <Button
                     Name="SaveCustomer"
                     Grid.Row="4"
@@ -345,7 +346,7 @@
                             Foreground="DarkRed"
                     />
                 </Button>
-
+                -->
             </StackPanel>
 
         </Border>

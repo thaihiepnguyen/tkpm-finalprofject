@@ -19,7 +19,7 @@ namespace MyShop.DAO
         {
             ObservableCollection<CustomerDTO> list = new ObservableCollection<CustomerDTO>();
 
-            string sql = "select CusID, CusName from customer";
+            string sql = "select CusID, CusName, Tel, Address from customer";
 
             var command = new SqlCommand(sql, db.connection);
 
@@ -30,6 +30,8 @@ namespace MyShop.DAO
                 CustomerDTO customer = new CustomerDTO();
                 customer.CusID = (int)reader["CusID"];
                 customer.CusName = (string)reader["CusName"];
+                customer.Tel = (string)reader["Tel"];
+                customer.Address = (string)reader["Address"];
 
                 list.Add(customer);
             }
@@ -41,11 +43,13 @@ namespace MyShop.DAO
 
         public int insertCustomer(CustomerDTO customer)
         {
-            string sql = "insert into customer(CusName)" +
-                "values(@CusName)";
+            string sql = "insert into customer(CusName, Tel, Address)" +
+                "values(@CusName, @Tel, @Address)";
             var command = new SqlCommand(sql, db.connection);
 
             command.Parameters.Add("@CusName", SqlDbType.NVarChar).Value = customer.CusName;
+            command.Parameters.Add("@Tel", SqlDbType.VarChar).Value = customer.Tel;
+            command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = customer.Address;
 
             command.ExecuteNonQuery();
 
@@ -71,7 +75,7 @@ namespace MyShop.DAO
             List<CustomerDTO> list = new List<CustomerDTO>();
             CustomerDTO result = new();
 
-            string sql = $"select CusID, CusName from customer where CusID = @id";
+            string sql = $"select CusID, CusName, Tel, Address from customer where CusID = @id";
 
             var command = new SqlCommand(sql, db.connection);
             command.Parameters.Add("@id", SqlDbType.Int).Value = cusID;
@@ -83,6 +87,8 @@ namespace MyShop.DAO
 
                 customer.CusID = (int)reader["CusID"];
                 customer.CusName = (string)reader["CusName"];
+                customer.Tel = (string)reader["Tel"];
+                customer.Address = (string)reader["Address"];
 
                 list.Add(customer);
             }
@@ -98,7 +104,7 @@ namespace MyShop.DAO
             List<CustomerDTO> list = new List<CustomerDTO>();
             CustomerDTO result = new();
 
-            string sql = $"select CusID, CusName from customer where CusID = @id";
+            string sql = $"select CusID, CusName, Tel, Address from customer where CusID = @id";
 
             var command = new SqlCommand(sql, db.connection);
             command.Parameters.Add("@id", SqlDbType.Int).Value = cusID;
@@ -110,6 +116,8 @@ namespace MyShop.DAO
 
                 customer.CusID = (int)reader["CusID"];
                 customer.CusName = (string)reader["CusName"];
+                customer.Tel = (string)reader["Tel"];
+                customer.Address = (string)reader["Address"];
 
                 list.Add(customer);
             }

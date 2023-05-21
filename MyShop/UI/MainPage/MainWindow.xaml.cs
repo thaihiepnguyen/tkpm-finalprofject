@@ -28,7 +28,8 @@ namespace MyShop.UI.MainPage
         const int Category = 2;
         const int Promotion = 3;
         const int Order = 4;
-        const int Statistical = 5;
+        const int Customer = 5;
+        const int Statistical = 6;
         private int _currentPage = 0;
 
         class Resoures
@@ -97,6 +98,11 @@ namespace MyShop.UI.MainPage
                 },
                 new Item()
                 {
+                    FontIcon = "User",
+                    ItemName = "Customers",
+                },
+                new Item()
+                {
                     FontIcon = "Briefcase",
                     ItemName = "Report"
                 }
@@ -143,6 +149,10 @@ namespace MyShop.UI.MainPage
             if (selectedIndex == Order)
             {
                 pageNavigation.NavigationService.Navigate(new OrderDetail(pageNavigation, loadingProgressBar));
+            }
+            if (selectedIndex == Customer)
+            {
+                pageNavigation.NavigationService.Navigate(new Customer(pageNavigation));
             }
             if (selectedIndex == Statistical)
             {

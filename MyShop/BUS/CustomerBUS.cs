@@ -1,4 +1,5 @@
-﻿using MyShop.DAO;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using MyShop.DAO;
 using MyShop.DTO;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,33 @@ namespace MyShop.BUS
         public CustomerDTO findCustomerById(int cusID)
         {
             return _customerDAO.getCustomerById(cusID);
+        }
+
+        public Tuple<ObservableCollection<CustomerDTO>, int> findCustomersBySearch(int currentPage = 1, int rowsPerPage = 9,
+                string keyword = "")
+        {
+            var origin = _customerDAO.getAll();
+
+            var list = origin
+                .Where((item) =>
+                {
+                    bool checkName = item.CusName.ToLower().Contains(keyword.ToLower());
+
+                    return checkName;
+                });
+
+            var items = list.Skip((currentPage - 1) * rowsPerPage)
+                    .Take(rowsPerPage);
+
+            var oc = new ObservableCollection<CustomerDTO>();
+            foreach (var item in items.ToList())
+                oc.Add(item);
+
+            var result = new Tuple<ObservableCollection<CustomerDTO>, int>(
+                   oc, list.Count()
+            );
+
+            return result;
         }
     }
 }
