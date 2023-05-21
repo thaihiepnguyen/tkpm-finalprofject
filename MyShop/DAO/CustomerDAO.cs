@@ -139,5 +139,20 @@ namespace MyShop.DAO
 
             command.ExecuteNonQuery();
         }
+
+        public void updateCustomer(CustomerDTO currentCustomer)
+        {
+            string sql = "update customer " +
+            "set CusName =  @CusName, Tel = @Tel, Address = @Address " +
+            "where CusID = @CusID";
+            var command = new SqlCommand(sql, db.connection);
+
+            command.Parameters.Add("@CusID", SqlDbType.Int).Value = currentCustomer.CusID;
+            command.Parameters.Add("@CusName", SqlDbType.NVarChar).Value = currentCustomer.CusName;
+            command.Parameters.Add("@Tel", SqlDbType.VarChar).Value = currentCustomer.Tel;
+            command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = currentCustomer.Address;
+
+            command.ExecuteNonQuery();
+        }
     }
 }

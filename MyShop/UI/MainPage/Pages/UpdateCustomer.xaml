@@ -1,0 +1,243 @@
+﻿<Page x:Class="MyShop.UI.MainPage.Pages.UpdateCustomer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
+      xmlns:local="clr-namespace:MyShop.UI.MainPage.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="UpdateCustomer">
+
+    <Page.Resources>
+        <local:RelativeToAbsoluteConverter x:Key="absoluteConverter"/>
+        <local:DecimalToCurrencyConverter x:Key="currencyConverter"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <!--Hiển thị nút bấm trở về-->
+        <Button
+            Name="BackButton"
+            Width="85"
+            Height="30"
+            Style="{StaticResource MyButtonStyle}"
+            BorderThickness="0.5"
+            BorderBrush="Orange"
+            HorizontalAlignment="Left"
+            Margin="20,10,0,0"
+            Click="BackButton_Click"
+            >
+            <StackPanel
+                Orientation="Horizontal">
+                <fa:ImageAwesome 
+                    Name="CatIcon"
+                    Width="11"
+                    Height="11"
+                    Margin="0, 0, 8, 0"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Icon="Backward"
+                    Foreground="#8B4000"
+                        />
+                <TextBlock
+                    FontWeight="Bold"
+                    Foreground="#8B4000"
+                    >Trở về</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Border Grid.Row="1"
+              Background="#60ffffff"
+              Margin="20,10,20,0"
+                VerticalAlignment="Top"
+                Height="200"
+                CornerRadius="10"
+                Padding="5"
+              >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Hiển thị nhập tên khách hàng-->
+                <StackPanel Margin="0, 10, 0, 10" Orientation="Vertical">
+                    <TextBlock Margin="20,0,0,0" 
+                               Text="TÊN KHÁCH HÀNG"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               Foreground="#353935"/>
+                    <Border 
+                    BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
+                    Grid.Column="0" Background="White"
+                    Height="35"
+                    Width="270"
+                        HorizontalAlignment="Left"
+                    Margin="10">
+                        <Grid
+                            Width="250"
+                            Margin="0"
+                            HorizontalAlignment="Center">
+                            <TextBox 
+                                BorderThickness="0"
+                                VerticalContentAlignment="Center"
+                                FontSize="13"
+                                Width="270"
+                                x:Name="NameTermTextBox"
+                                Text="{Binding CusName}">
+                            </TextBox>
+                            <TextBlock IsHitTestVisible="False" Text="Nhập tên khách hàng" 
+                               VerticalAlignment="Center"
+                               FontSize="13"
+                               HorizontalAlignment="Left" Margin="5,0,0,0"
+                               Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=NameTermTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <!--Hiển thị nhập số điện thoại-->
+                <StackPanel Grid.Column="2" Margin="0, 10, 0, 10" Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Margin="20,0,0,0" 
+                               Text="SỐ ĐIỆN THOẠI"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               Foreground="#353935"/>
+                    <Border 
+                    BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
+                    Grid.Column="0" Background="White"
+                        HorizontalAlignment="Left"
+                    Height="35"
+                    Width="190"
+                    Margin="10">
+                        <Grid
+                            Width="170"
+                            Margin="0"
+                            HorizontalAlignment="Center">
+                            <TextBox 
+                                BorderThickness="0"
+                                VerticalContentAlignment="Center"
+                                FontSize="13"
+                                Width="190"
+                                x:Name="PhoneTermTextBox"
+                                Text="{Binding Tel}">
+                            </TextBox>
+                            <TextBlock IsHitTestVisible="False" Text="Nhập số điện thoại" 
+                               VerticalAlignment="Center"
+                               FontSize="13"
+                               HorizontalAlignment="Left" Margin="5,0,0,0"
+                               Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=PhoneTermTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <!--Hiển thị nhập địa chỉ -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 0, 0, 10" Orientation="Vertical" VerticalAlignment="Top">
+                    <TextBlock Margin="20,0,0,0" 
+                               Text="ĐỊA CHỈ"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               Foreground="#353935"/>
+                    <Border 
+                    BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
+                    Grid.Column="0" Background="White"
+                    Height="35"
+                    Width="470"
+                        HorizontalAlignment="Left"
+                    Margin="10">
+                        <Grid
+                            Width="450"
+                            Margin="0"
+                            HorizontalAlignment="Center">
+                            <TextBox 
+                                BorderThickness="0"
+                                VerticalContentAlignment="Center"
+                                FontSize="13"
+                                Width="470"
+                                x:Name="AddressTermTextBox"
+                                Text="{Binding Address}">
+                            </TextBox>
+                            <TextBlock IsHitTestVisible="False" Text="Nhập địa chỉ" 
+                               VerticalAlignment="Center"
+                               FontSize="13"
+                               HorizontalAlignment="Left" Margin="5,0,0,0"
+                               Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=AddressTermTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!--Hiển thị nút bấm lưu -->
+        <Button
+            Name="SaveCustomer"
+            Grid.Row="2"
+            Width="120"
+            Height="30"
+            Style="{StaticResource MyButtonStyle}"
+            BorderThickness="0.5"
+            BorderBrush="Red"
+            HorizontalAlignment="Right"
+            Margin="0,0,20,0"
+            Click="SaveCustomer_Click"
+            >
+            <StackPanel
+                Orientation="Horizontal">
+                <fa:ImageAwesome 
+                    Width="11"
+                    Height="11"
+                    Margin="0, 0, 8, 0"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Icon="Save"
+                    Foreground="DarkRed"
+                        />
+                <TextBlock
+                    FontWeight="Medium"
+                    Foreground="DarkRed"
+                    >Lưu khách hàng</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>

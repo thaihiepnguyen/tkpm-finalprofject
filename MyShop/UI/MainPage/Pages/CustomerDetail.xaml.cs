@@ -86,7 +86,7 @@ namespace MyShop.UI.MainPage.Pages
 
         private void UpdateCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            _pageNavigation.NavigationService.Navigate(new UpdateCustomer(_currentCustomer, _pageNavigation));
         }
 
         private void DelCustomer_Click(object sender, RoutedEventArgs e)

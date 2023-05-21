@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MyShop.DAO;
 using MyShop.DTO;
 using System;
@@ -66,6 +67,11 @@ namespace MyShop.BUS
         public void delCustomerById(int id)
         {
             _customerDAO.delCustomerById(id);
+        }
+
+        public void patchCustomer(CustomerDTO currentCustomer)
+        {
+            _customerDAO.updateCustomer(currentCustomer);
         }
     }
 }
