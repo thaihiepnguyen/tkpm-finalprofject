@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,8 +47,32 @@ namespace MyShop.DAO
             reader.Close();
             return user;
         }
+
+        public bool CheckUserExist(string username)
+        {
+            var query = "SELECT * FROM [user] WHERE Username = @Username";
+
+            var command = new SqlCommand(query, db.connection);
+            AesHelper aesHelper = new AesHelper();
+            command.Parameters.AddWithValue("@Username", username);
+
+            int UserExist = (int)command.ExecuteScalar();
+
+            if (UserExist > 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
         public bool CreateUser(UserDTO user)
         {
+            // Kiểm tra username tồn tại
+            if(!CheckUserExist(user.Username))
+            {
+                return false;
+            }
+
             var query = "INSERT INTO [user] (Username, Password, Fullname, Gender, Address, Tel, AvatarPath, IsHide, RoleID) VALUES (@Username, @Password, @Fullname, @Gender, @Address, @Tel, @AvatarPath, @IsHide, @RoleID)";
 
             var command = new SqlCommand(query, db.connection);
