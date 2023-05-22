@@ -9,6 +9,8 @@ using MyShop.DTO;
 using System.Diagnostics;
 using System.Windows.Documents;
 using MyShop.UI.MainPage.Pages;
+using DocumentFormat.OpenXml.Office.Word;
+using System.Windows;
 
 namespace MyShop.DAO
 {
@@ -56,15 +58,15 @@ namespace MyShop.DAO
             AesHelper aesHelper = new AesHelper();
             command.Parameters.AddWithValue("@Username", username);
 
-            int UserExist = (int)command.ExecuteScalar();
-
-            if (UserExist > 0)
+            var result = command.ExecuteScalar();
+            if (result != null)
             {
                 return false;
             }
-
+            
             return true;
         }
+
         public bool CreateUser(UserDTO user)
         {
             // Kiểm tra username tồn tại
