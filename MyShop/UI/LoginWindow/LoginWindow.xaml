@@ -181,25 +181,17 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
                 <TextBlock Text="Don't have an account?" VerticalAlignment="Center"/>
-                <Button
-                    Margin="10 0 0 0"
-              
-                    Width="100"
-                    Height="30"
-                    Style="{StaticResource MyButtonStyle}"
-                    BorderThickness="0.5"
-                    BorderBrush="Orange"
-                     Background="White"
-                          Click="Button_Signup"
-                 >
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
 
-                        <TextBlock
-                            FontWeight="Medium"
-                            Foreground="#8B4000"
-                            ><Run Text="Sign up"/></TextBlock>
-                    </StackPanel>
-                </Button>
+                    <TextBlock
+                        Margin="10 0 0 0"
+                        FontWeight="Medium"
+                        Foreground="#8B4000"
+                        PreviewMouseDown="Button_Signup"
+                        
+                        ><Run Text="Sign up"/>
+                    </TextBlock>
+                </StackPanel>
             </StackPanel>
 
 
