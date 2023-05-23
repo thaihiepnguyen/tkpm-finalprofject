@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -198,28 +199,36 @@ namespace MyShop.DAO
 
                 var command = new SqlCommand(sql, db.connection);
 
-                var reader = command.ExecuteReader();
+                SqlDataReader reader = null;
 
-                while (reader.Read())
+                try
                 {
-                    ShopOrderDTO shopOrder = new ShopOrderDTO
+                    reader = command.ExecuteReader();
+                } catch (Exception ex) { Console.WriteLine(ex.Message); }
+                
+                if (reader != null)
+                {
+                    while (reader.Read())
                     {
-                        OrderID = (int)reader["OrderID"],
-                        CusID = reader["CusID"] == DBNull.Value ? null : (int?)reader["CusID"],
-                        CreateAt = (DateTime)reader["CreateAt"],
-                        // này để tránh lỗi :)
-                        FinalTotal = reader["FinalTotal"] == DBNull.Value ? null : (decimal?)reader["FinalTotal"],
-                        ProfitTotal = reader["ProfitTotal"] == DBNull.Value ? null : (decimal?)reader["ProfitTotal"]
-                    };
+                        ShopOrderDTO shopOrder = new ShopOrderDTO
+                        {
+                            OrderID = (int)reader["OrderID"],
+                            CusID = reader["CusID"] == DBNull.Value ? null : (int?)reader["CusID"],
+                            CreateAt = (DateTime)reader["CreateAt"],
+                            // này để tránh lỗi :)
+                            FinalTotal = reader["FinalTotal"] == DBNull.Value ? null : (decimal?)reader["FinalTotal"],
+                            ProfitTotal = reader["ProfitTotal"] == DBNull.Value ? null : (decimal?)reader["ProfitTotal"]
+                        };
 
-                    if (shopOrder.CusID != null)
-                    {
-                        list.Add(shopOrder);
-                    }   
+                        if (shopOrder.CusID != null)
+                        {
+                            list.Add(shopOrder);
+                        }
+                    }
+
+                    reader.Close();
+                    System.Threading.Thread.Sleep(200);
                 }
-
-                reader.Close();
-                System.Threading.Thread.Sleep(500);
             });
 
             return list;

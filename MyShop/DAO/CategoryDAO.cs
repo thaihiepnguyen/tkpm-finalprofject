@@ -53,21 +53,30 @@ namespace MyShop.DAO
             var command = new SqlCommand(sql, db.connection);
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
-            var reader = command.ExecuteReader();
-            while (reader.Read())
+            SqlDataReader reader = null;
+
+            try
             {
-                CategoryDTO category = new CategoryDTO();
+                reader = command.ExecuteReader();
+            } catch (Exception ex) { Console.WriteLine(ex.Message); }
 
-                category.CatID = (int)reader["CatID"];
-                category.CatName = reader["CatName"] == DBNull.Value ? "Lỗi tên thể loại" : (string?)reader["CatName"];
-                category.CatIcon = (string)reader["CatIcon"];
-                category.CatDescription = (string)reader["CatDescription"];
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    CategoryDTO category = new CategoryDTO();
 
-                list.Add(category);
+                    category.CatID = (int)reader["CatID"];
+                    category.CatName = reader["CatName"] == DBNull.Value ? "Lỗi tên thể loại" : (string?)reader["CatName"];
+                    category.CatIcon = (string)reader["CatIcon"];
+                    category.CatDescription = (string)reader["CatDescription"];
+
+                    list.Add(category);
+                }
+
+                reader.Close();
+                result = list[0];
             }
-
-            reader.Close();
-            result = list[0];
 
             return result;
         }

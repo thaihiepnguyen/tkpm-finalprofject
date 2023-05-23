@@ -159,7 +159,7 @@
 
                 <Button
                   Margin="0 0 10 0"
-                    Width="163"
+                    Width="250"
                     Height="30"
                     Style="{StaticResource MyButtonStyle}"
                     BorderThickness="0.5"
@@ -175,26 +175,26 @@
                             ><Run Text="Login"/></TextBlock>
                     </StackPanel>
                 </Button>
-                <Button
-                    Margin="10 0 0 0"
-              
-                    Width="168"
-                    Height="30"
-                    Style="{StaticResource MyButtonStyle}"
-                    BorderThickness="0.5"
-                    BorderBrush="Orange"
-                     Background="White"
-                          Click="Button_Signup"
-                 >
-                    <StackPanel Orientation="Horizontal">
-
-                        <TextBlock
-                            FontWeight="Medium"
-                            Foreground="#8B4000"
-                            ><Run Text="Sign up"/></TextBlock>
-                    </StackPanel>
-                </Button>
+                
+                
             </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
+                <TextBlock Text="Don't have an account?" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock
+                        Margin="10 0 0 0"
+                        FontWeight="Medium"
+                        Foreground="#8B4000"
+                        PreviewMouseDown="Button_Signup"
+                        
+                        ><Run Text="Sign up"/>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+
+
 
             <!--     <Button    Content="Signup" Background="Transparent" Height="30" Click="Button_Signup" Margin="00 10 0 0">
                     <Button.BorderBrush>

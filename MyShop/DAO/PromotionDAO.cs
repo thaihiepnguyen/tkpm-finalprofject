@@ -23,19 +23,28 @@ namespace MyShop.DAO
 
             var command = new SqlCommand(sql, db.connection);
 
-            var reader = command.ExecuteReader();
-
-            while (reader.Read())
+            SqlDataReader reader = null;
+            try
             {
-                PromotionDTO category = new PromotionDTO();
-                category.IdPromo = (int)reader["IdPromo"];
-                category.PromoCode = reader["PromoCode"] == DBNull.Value ? null : (string?)reader["PromoCode"];
-                category.DiscountPercent = (int)reader["DiscountPercent"];
-
-                list.Add(category);
+                reader = command.ExecuteReader();
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
+            
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    PromotionDTO category = new PromotionDTO();
+                    category.IdPromo = (int)reader["IdPromo"];
+                    category.PromoCode = reader["PromoCode"] == DBNull.Value ? null : (string?)reader["PromoCode"];
+                    category.DiscountPercent = (int)reader["DiscountPercent"];
 
-            reader.Close();
+                    list.Add(category);
+                }
+
+                reader.Close();
+            }
 
             return list;
         }
@@ -49,19 +58,28 @@ namespace MyShop.DAO
             var command = new SqlCommand(sql, db.connection);
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
-            var reader = command.ExecuteReader();
-            while (reader.Read())
+            SqlDataReader reader = null;
+
+            try
             {
-                PromotionDTO category = new PromotionDTO();
-                category.IdPromo = (int)reader["IdPromo"];
-                category.PromoCode = reader["PromoCode"] == DBNull.Value ? null : (string?)reader["PromoCode"];
-                category.DiscountPercent = (int)reader["DiscountPercent"];
+                reader = command.ExecuteReader();
+            } catch(Exception ex) { Console.WriteLine(ex.Message) ; }
 
-                list.Add(category);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    PromotionDTO category = new PromotionDTO();
+                    category.IdPromo = (int)reader["IdPromo"];
+                    category.PromoCode = reader["PromoCode"] == DBNull.Value ? null : (string?)reader["PromoCode"];
+                    category.DiscountPercent = (int)reader["DiscountPercent"];
+
+                    list.Add(category);
+                }
+
+                reader.Close();
+                result = list[0];
             }
-
-            reader.Close();
-            result = list[0];
 
             return result;
         }
