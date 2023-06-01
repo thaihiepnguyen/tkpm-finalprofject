@@ -67,6 +67,11 @@ namespace MyShop.UI.MainPage.Pages
 
         private void SaveCategory_Click(object sender, RoutedEventArgs e)
         {
+            if (!isCatNameValid())
+            {
+                MessageBox.Show("Vui lòng nhập giá trị hợp lệ!!", "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             var category = new CategoryDTO();
 
             category.CatName = NameTermTextBox.Text;
@@ -79,7 +84,7 @@ namespace MyShop.UI.MainPage.Pages
             category.CatID = id;
             _categories.Add(category);
 
-            MessageBox.Show("Thể loại đã thêm thành công", "Thông báo", MessageBoxButton.OK);
+            MessageBox.Show("Thể loại đã thêm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DelCategory_Click(object sender, RoutedEventArgs e)
@@ -116,5 +121,21 @@ namespace MyShop.UI.MainPage.Pages
             }
         }
 
+        private Boolean isCatNameValid()
+        {
+            if (NameTermTextBox.Text != "")
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                NameTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                NameTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
     }
 }

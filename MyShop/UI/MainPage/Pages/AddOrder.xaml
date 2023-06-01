@@ -114,6 +114,7 @@
                 <!--Hiển thị nhập số lượng-->
                 <StackPanel Grid.Column="1" Margin="0, 5, 0, 5" Orientation="Vertical">
                     <Border 
+                        Name="QuantityTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="30"

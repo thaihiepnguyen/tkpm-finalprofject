@@ -58,6 +58,11 @@ namespace MyShop.UI.MainPage.Pages
 
         private void SaveOrder_Click(object sender, RoutedEventArgs e)
         {
+            if (_purchaseBuffer.Count == 0)
+            {
+                MessageBox.Show("Chưa có sản phẩm nào ở đơn hàng này", "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             // lúc này mới lưu vào database 
             foreach (var purchase in _purchaseBuffer)
             {
@@ -68,7 +73,7 @@ namespace MyShop.UI.MainPage.Pages
             _orderBUS.patchShopOrder(_shopOrderDTO);
             _list.Add(new OrderDetail.Data(_shopOrderDTO, _customerBUS));
 
-            MessageBox.Show("Đã lưu đơn hàng thành công", "Thông Báo");
+            MessageBox.Show("Đã lưu đơn hàng thành công", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Information);
             _pageNavigation.NavigationService.GoBack();
             _verifyOrder = false;
         }
@@ -107,9 +112,9 @@ namespace MyShop.UI.MainPage.Pages
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (QuantityTermTextBox.Text == "")
+            if (!isQuantityValid())
             {
-                MessageBox.Show("Vui lòng nhập số lượng", "Thông báo",MessageBoxButton.OK);
+                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!!", "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -122,9 +127,9 @@ namespace MyShop.UI.MainPage.Pages
             int quantity = int.Parse(QuantityTermTextBox.Text);
 
             _currentQuantity = quantity;
-            if (quantity <= 0 || _currentQuantity > _currentProduct.Quantity)
+            if ( _currentQuantity > _currentProduct.Quantity)
             {
-                MessageBox.Show("Có lỗi xảy ra", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("Số lượng sản phẩm đặt mua vượt quá số lượng tồn kho", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             // lúc này chưa tạo đơn hàng
@@ -152,7 +157,7 @@ namespace MyShop.UI.MainPage.Pages
 
             _purchaseBuffer.Add(purchareDTO);
 
-            MessageBox.Show("Sản phẩm đã thêm thành công", "Thông báo", MessageBoxButton.OK);
+            MessageBox.Show("Sản phẩm đã thêm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
             var data = new Data
             {
@@ -179,6 +184,26 @@ namespace MyShop.UI.MainPage.Pages
             // tính lợi nhuận
             _shopOrderDTO.ProfitTotal = _currentTotalPrice - _totalRealPrice;
             CustomerCombobox.IsEnabled = false;
+        }
+
+        private Boolean isQuantityValid()
+        {
+            int parsed;
+            bool success = int.TryParse(QuantityTermTextBox.Text,
+                out parsed);
+            if (QuantityTermTextBox.Text != "" && success && parsed > 0)
+            {
+                QuantityTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                QuantityTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                QuantityTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                QuantityTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
         }
 
         /*

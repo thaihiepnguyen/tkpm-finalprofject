@@ -66,6 +66,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                     <Border 
+                        Name="NameTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="30"

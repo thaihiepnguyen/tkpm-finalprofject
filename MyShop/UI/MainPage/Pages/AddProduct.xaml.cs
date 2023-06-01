@@ -187,7 +187,7 @@ namespace MyShop.UI.MainPage.Pages
             Decimal parsed;
             bool success = Decimal.TryParse(PriceTermTextBox.Text,
                 out parsed);
-            if (PriceTermTextBox.Text != "" && success)
+            if (PriceTermTextBox.Text != "" && success && parsed > 0)
             {
                 PriceTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 PriceTermBorder.BorderThickness = new Thickness(0.5);
@@ -206,7 +206,7 @@ namespace MyShop.UI.MainPage.Pages
             Double parsed;
             bool success = Double.TryParse(RamTermTextBox.Text,
                 out parsed);
-            if (RamTermTextBox.Text != "" && success)
+            if (RamTermTextBox.Text != "" && success && parsed > 0)
             {
                 RamTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 RamTermBorder.BorderThickness = new Thickness(0.5);
@@ -225,7 +225,7 @@ namespace MyShop.UI.MainPage.Pages
             int parsed;
             bool success = int.TryParse(RomTermTextBox.Text,
                 out parsed);
-            if (RomTermTextBox.Text != "" && success)
+            if (RomTermTextBox.Text != "" && success && parsed > 0)
             {
                 RomTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 RomTermBorder.BorderThickness = new Thickness(0.5);
@@ -244,7 +244,7 @@ namespace MyShop.UI.MainPage.Pages
             Double parsed;
             bool success = Double.TryParse(ScreenSizeTermTextBox.Text,
                 out parsed);
-            if (ScreenSizeTermTextBox.Text != "" && success)
+            if (ScreenSizeTermTextBox.Text != "" && success && parsed > 0)
             {
                 ScreenSizeTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 ScreenSizeTermBorder.BorderThickness = new Thickness(0.5);
@@ -263,7 +263,7 @@ namespace MyShop.UI.MainPage.Pages
             int parsed;
             bool success = int.TryParse(PinTermTextBox.Text,
                 out parsed);
-            if (PinTermTextBox.Text != "" && success)
+            if (PinTermTextBox.Text != "" && success && parsed > 0)
             {
                 PinTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 PinTermBorder.BorderThickness = new Thickness(0.5);
@@ -282,7 +282,7 @@ namespace MyShop.UI.MainPage.Pages
             int parsed;
             bool success = int.TryParse(QuantityTermTextBox.Text,
                 out parsed);
-            if (QuantityTermTextBox.Text != "" && success)
+            if (QuantityTermTextBox.Text != "" && success && parsed > 0)
             {
                 QuantityTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
                 QuantityTermBorder.BorderThickness = new Thickness(0.5);

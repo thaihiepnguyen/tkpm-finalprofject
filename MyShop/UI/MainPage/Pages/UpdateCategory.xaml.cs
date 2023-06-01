@@ -51,14 +51,35 @@ namespace MyShop.UI.MainPage.Pages
 
         private void SaveCategory_Click(object sender, RoutedEventArgs e)
         {
+            if (!isCatNameValid())
+            {
+                MessageBox.Show("Vui lòng nhập giá trị hợp lệ!!", "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _category.CatName = NameTermTextBox.Text;
             _category.CatDescription = DesTermTextBox.Text;
             _category.CatIcon = _icons[CategoryCombobox.SelectedIndex].CatIcon;
 
             _categoryBUS.updateCategory(_category);
 
-            MessageBox.Show("Chỉnh sửa thể loại thành công", "Thông báo", MessageBoxButton.OK);
+            MessageBox.Show("Chỉnh sửa thể loại thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             _pageNavigation.NavigationService.GoBack();
+        }
+        private Boolean isCatNameValid()
+        {
+            if (NameTermTextBox.Text != "")
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                NameTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                NameTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
         }
     }
 }
