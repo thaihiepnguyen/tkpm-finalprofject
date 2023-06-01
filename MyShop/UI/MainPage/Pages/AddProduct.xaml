@@ -71,6 +71,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                     <Border 
+                    Name="NameTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -150,6 +151,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                     <Border 
+                    Name="PriceTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -213,6 +215,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                     <Border 
+                        Name="DesTermBorder"
                         BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                         Grid.Column="0" Background="White"
                         Height="150"
@@ -268,6 +271,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="RamTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -314,6 +318,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="ScreenSizeTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -358,6 +363,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="TradeMarkTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -407,6 +413,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="RomTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"
@@ -452,6 +459,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="PinTermBorder"
                             BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                             Grid.Column="0" Background="White"
                             Height="35"
@@ -497,6 +505,7 @@
                                FontWeight="Medium"
                                Foreground="#353935"/>
                         <Border 
+                            Name="QuantityTermBorder"
                     BorderThickness="0.5" BorderBrush="Orange" CornerRadius="5"
                     Grid.Column="0" Background="White"
                     Height="35"

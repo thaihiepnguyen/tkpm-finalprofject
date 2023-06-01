@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Win32;
 using MyShop.BUS;
+using MyShop.DAO;
 using MyShop.DTO;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Border = System.Windows.Controls.Border;
 
 namespace MyShop.UI.MainPage.Pages
 {
     /// <summary>
     /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class AddProduct : Page
+    
+    public partial class AddProduct : System.Windows.Controls.Page
     {
         private bool _isImageChanged = false;
         private FileInfo? _selectedImage = null;
@@ -81,6 +86,12 @@ namespace MyShop.UI.MainPage.Pages
 
         private void SaveProduct_Click(object sender, RoutedEventArgs e)
         {
+
+            if (!isDataValid())
+            {
+                MessageBox.Show("Vui lòng nhập giá trị hợp lệ!!", "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (_selectedImage == null)
             {
                 MessageBox.Show("Vui lòng nhập ảnh đại diện");
@@ -102,13 +113,15 @@ namespace MyShop.UI.MainPage.Pages
             productDTO.Quantity = int.Parse(QuantityTermTextBox.Text);
             productDTO.Block = 0;
 
+        
+
             int id = _productBUS.saveProduct(productDTO);
 
             string key = Guid.NewGuid().ToString();
 
             _productBUS.uploadImage(_selectedImage, id, key);
 
-            MessageBox.Show("Sản phẩm đã thêm thành công", "Thông báo", MessageBoxButton.OK);
+            MessageBox.Show("Sản phẩm đã thêm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void AddCategory_Click(object sender, RoutedEventArgs e)
@@ -119,6 +132,209 @@ namespace MyShop.UI.MainPage.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             _pageNavigation.NavigationService.GoBack();
+        }
+        private Boolean isProNameValid()
+        {
+            if (NameTermTextBox.Text != "" )
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                NameTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                NameTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                NameTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isTinyDesValid()
+        {
+            if (DesTermTextBox.Text != "")
+            {
+                DesTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                DesTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                DesTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                DesTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isTradeMarkValid()
+        {
+            if (TradeMarkTermTextBox.Text != "")
+            {
+                TradeMarkTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                TradeMarkTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                TradeMarkTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                TradeMarkTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        
+        private Boolean isPriceValid()
+        {
+            Decimal parsed;
+            bool success = Decimal.TryParse(PriceTermTextBox.Text,
+                out parsed);
+            if (PriceTermTextBox.Text != "" && success)
+            {
+                PriceTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                PriceTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                PriceTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                PriceTermBorder.BorderThickness = new Thickness(2);
+                return false;
+                
+            }
+        }
+        private Boolean isRamValid()
+        {
+            Double parsed;
+            bool success = Double.TryParse(RamTermTextBox.Text,
+                out parsed);
+            if (RamTermTextBox.Text != "" && success)
+            {
+                RamTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                RamTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                RamTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                RamTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isRomValid()
+        {
+            int parsed;
+            bool success = int.TryParse(RomTermTextBox.Text,
+                out parsed);
+            if (RomTermTextBox.Text != "" && success)
+            {
+                RomTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                RomTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                RomTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                RomTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isScreenSizeValid()
+        {
+            Double parsed;
+            bool success = Double.TryParse(ScreenSizeTermTextBox.Text,
+                out parsed);
+            if (ScreenSizeTermTextBox.Text != "" && success)
+            {
+                ScreenSizeTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                ScreenSizeTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                ScreenSizeTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                ScreenSizeTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isBatteryCapacityValid()
+        {
+            int parsed;
+            bool success = int.TryParse(PinTermTextBox.Text,
+                out parsed);
+            if (PinTermTextBox.Text != "" && success)
+            {
+                PinTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                PinTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                PinTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                PinTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        private Boolean isQuantityValid()
+        {
+            int parsed;
+            bool success = int.TryParse(QuantityTermTextBox.Text,
+                out parsed);
+            if (QuantityTermTextBox.Text != "" && success)
+            {
+                QuantityTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+                QuantityTermBorder.BorderThickness = new Thickness(0.5);
+                return true;
+            }
+            else
+            {
+                QuantityTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                QuantityTermBorder.BorderThickness = new Thickness(2);
+                return false;
+
+            }
+        }
+        //private Boolean isPriceValid()
+        //{
+        //    if (PriceTermTextBox.Text != "" &&
+        //       Regex.IsMatch(PriceTermTextBox.Text, @"^[0-9]*\.?[0-9]+$"))
+        //    {
+        //        PriceTermBorder.BorderBrush = System.Windows.Media.Brushes.Orange;
+        //        PriceTermBorder.BorderThickness = new Thickness(0.5);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        PriceTermBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+        //        PriceTermBorder.BorderThickness = new Thickness(2);
+        //        return false;
+
+        //    }
+        //}
+        private Boolean isDataValid()
+        {
+            Boolean proNameValidFlag = isProNameValid();
+            Boolean tinyDesValidFlag = isTinyDesValid();
+            Boolean tradeMarkValidFlag = isTradeMarkValid();
+            Boolean priceValidFlag = isPriceValid();
+            Boolean ramValidFlag = isRamValid();
+            Boolean romValidFlag = isRomValid();
+            Boolean screenSizeValidFlag  = isScreenSizeValid();
+            Boolean batteryCapacityValidFlag = isBatteryCapacityValid();
+            Boolean quantityValidFlag = isQuantityValid();
+
+            Boolean isValid = proNameValidFlag && tinyDesValidFlag && tradeMarkValidFlag && priceValidFlag && ramValidFlag && romValidFlag && screenSizeValidFlag && batteryCapacityValidFlag && quantityValidFlag;
+
+            if (isValid)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
